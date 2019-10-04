@@ -1,0 +1,11 @@
+{
+    "name": "logistics/common",
+    "description": "Common files for web and api project",
+    "authors": [
+        {
+            "name": "merdiano",
+            "email": "merdan.m@gmail.com"
+        }
+    ],
+    "require": {}
+}
