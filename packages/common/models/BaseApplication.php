@@ -54,7 +54,9 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
             ->whereDate('bidding_ends_at','>=',Carbon::today());
     }
 
-    public function scopeMine($query){
-        return $query->where('owner_id',auth()->id());
+    public function scopeMine($query, $app_id = false){
+        $query->where('owner_id',auth()->id());
+        if($app_id)
+            $query->where('id',$app_id);
     }
 }
