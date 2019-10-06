@@ -14,4 +14,13 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->post('auth/login','AuthController@authenticate');
+
+
+$router->group(['prefix' => 'v1'], function () use ($router) {
+    // Matches "/api/register
+    $router->post('register', 'AuthController@register');
+    $router->post('login','AuthController@login');
+    Route::group(['middleware' => 'auth'], function(){
+
+    });
+});

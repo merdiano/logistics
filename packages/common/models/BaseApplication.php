@@ -7,9 +7,19 @@
  */
 namespace Logistics\Common\Models;
 
+use Carbon\Carbon;
+
 class BaseApplication extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'applications';
+    // protected $primaryKey = 'id';
+    // public $timestamps = false;
+    // protected $hidden = [];
+    // protected $dates = [];
+    protected $guarded = ['id'];
+    protected $fillable = ['owner_id','account_id','title','description','approved','winning_bid_id',
+        'bidding_ends_at','estimated_cost','estimated_time','estimated_time_unit','image','pickup_location_id',
+        'pickup_address','destination_address','destination_location_id',];
 
     public function bids(){
         return $this->hasMany(BaseBid::class);
@@ -28,10 +38,23 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
     }
 
     public function pickup_location(){
-        return $this->belongsTo(BaseLocation::class,'pickup_location_id');
+        return $this->belongsTo(BaseLocation::class,'pickup_location_id')
+            ->select('id','title_tk','title_ru');
     }
 
     public function destination_location(){
-        return $this->belongsTo(BaseLocation::class,'destination_location_id');
+        return $this->belongsTo(BaseLocation::class,'destination_location_id')
+            ->select('id','title_tk','title_ru');
+    }
+
+    public function scopeBiddable($query){
+        return $query->where('approved',1)
+            ->with('pickup_location')
+            ->with('destination_location')
+            ->whereDate('bidding_ends_at','>=',Carbon::today());
+    }
+
+    public function scopeMine($query){
+        return $query->where('owner_id',auth()->id());
     }
 }

@@ -25,7 +25,7 @@ class CreateBidsTable extends Migration
             $table->enum('estimated_time_unit',['minute','hour','day','week','month']);
             $table->string('comment')->nullable();
             $table->unsignedBigInteger('application_id');
-            $table->foreign('application_id')->references('id')->on('applications');
+            $table->foreign('application_id')->references('id')->on('applications')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

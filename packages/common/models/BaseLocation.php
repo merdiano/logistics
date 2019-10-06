@@ -10,4 +10,13 @@ class BaseLocation extends \Illuminate\Database\Eloquent\Model
 {
     protected $fillable =['lft','rgt','depth','parent_id','title_ru','title_tk'];
     protected $table = 'locations';
+    protected $guarded = ['id'];
+
+    public function parent(){
+        return $this->belongsTo(BaseLocation::class,'parent_id');
+    }
+
+    public function children(){
+        return $this->hasMany(BaseLocation::class,'parent_id');
+    }
 }

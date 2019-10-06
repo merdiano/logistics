@@ -2,14 +2,14 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Logistics\Common\Models\BaseUser;
-
-class User extends BaseUser
+use Illuminate\Foundation\Auth\Access\Authorizable;
+class User extends BaseUser implements AuthorizableContract
 {
-    use  CanResetPassword, Notifiable;
+    use  CanResetPassword, Notifiable, Authorizable;
 
     /**
      * The attributes that should be cast to native types.

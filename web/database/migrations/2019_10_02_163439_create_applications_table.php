@@ -18,7 +18,7 @@ class CreateApplicationsTable extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('winning_bid_id')->nullable();
-            $table->foreign('owner_id')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('account_id')->references('id')->on('accounts');
 //            $table->foreign('winning_bid_id')->references('id')->on('bids');
             $table->boolean('approved')->default(0);

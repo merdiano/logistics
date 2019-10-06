@@ -1,10 +1,10 @@
 <?php
 namespace Logistics\Common\Models;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Foundation\Auth\Access\Authorizable;
+
 /**
  * Created by PhpStorm.
  * User: merdan
@@ -12,9 +12,9 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * Time: 20:45
  */
 
-class BaseUser extends Model implements AuthenticatableContract, AuthorizableContract
+class BaseUser extends Model implements AuthenticatableContract
 {
-    use Authenticatable, Authorizable;
+    use Authenticatable;
     /**
      * The attributes that are mass assignable.
      *
