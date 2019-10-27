@@ -28,12 +28,13 @@ class ApplicationController extends Controller
 
     public function get($app_id){
 //        return $app_id;
-        return BaseApplication::withCount('bids')
-            ->with('pickup_location')
-            ->with('destination_location')
-            ->with('account')
-//            ->with('winner')
-            ->findOrFail($app_id);
+        return BaseApplication::
+//        withCount('bids')
+//            ->with('pickup_location')
+//            ->with('destination_location')
+//            ->with('account')
+//  todo          ->with('winner')
+            findOrFail($app_id);
     }
 
     public function store(Request $request){

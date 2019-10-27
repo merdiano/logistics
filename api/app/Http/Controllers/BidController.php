@@ -41,6 +41,13 @@ class BidController extends Controller
                 if($request->has('bid_id')){
                     $bid = BaseBid::findOrFail($request->get('bid_id'));
                 }
+                else {
+                    $bid = new BaseBid();
+                    $bid->owner_id = auth()->id();
+                    $bid->account_id = auth()->user()->account_id;
+                }
+
+
             }
 
         }
