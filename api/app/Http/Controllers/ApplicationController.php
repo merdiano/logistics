@@ -18,7 +18,7 @@ use Logistics\Common\Models\BaseApplication;
 class ApplicationController extends Controller
 {
 
-    public function getAvailableApplications(){
+    public function getApplications(){
         return BaseApplication::biddable()->paginate(20);
     }
 
@@ -36,11 +36,20 @@ class ApplicationController extends Controller
         if($app)
             return response()->json(['application' => $app]);
         else
-            return rescue()->json(['message'=>'not found'],404);
+            return response()->json(['message'=>'not found'],404);
     }
 
     public function store(Request $request){
-        //todo validation
+        $this->validate($request, [
+            'bidding_ends_at' => 'required|date',
+            'description' => 'required|string',
+            'pickup_location_id' => 'required',
+            'pickup_address' => 'required',
+            'destination_location_id' => 'required',
+            'destination_address' => 'required',
+            'estimated_time' => 'required|numeric',
+            'estimated_time_unit' => 'required',
+        ]);
         try{
 
             if($request->get('id')){
@@ -54,18 +63,23 @@ class ApplicationController extends Controller
             }
 
             $application->bidding_ends_at = Carbon::parse($request->get('bidding_ends_at'));
-            $application->title = $request->get('title');
+//            $application->title = $request->get('title');
             $application->description = $request->get('description');
             $application->estimated_cost = $request->get('estimated_cost');
             $application->pickup_location_id = $request->get('pickup_location_id');
             $application->pickup_address = $request->get('pickup_address');
             $application->destination_address = $request->get('destination_address');
             $application->destination_location_id = $request->get('destination_location_id');
+            $application->estimated_time_unit = $request->get('estimated_time_unit');
+            $application->estimated_time = $request->get('estimated_time');
             $application->save();
-            return response()->json(['application_id' => $application->id, 'message' => 'stored'], 201);
+
+            return response()->json([
+                'application_id' => $application->id,
+                'message' => 'stored'], 201);
         }catch (Exception $exception){
             Log::error($exception);
-            return response()->json(['message' => 'Application store Failed!'], 409);
+            return response()->json(['error' => 'Application store Failed!'], 409);
         }
     }
 

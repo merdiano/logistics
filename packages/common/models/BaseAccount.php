@@ -10,8 +10,8 @@ class BaseAccount extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'accounts';
     protected $guarded = ['id'];
-    protected $fillable = ['name','avatar','about','user_id'];
-
+    protected $fillable = ['name','avatar','about','user_id','locations'];
+    protected $casts = ['locations' => 'array'];
     public function applications(){
         return $this->hasMany(BaseApplication::class);
     }

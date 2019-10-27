@@ -20,14 +20,15 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     // Matches "/api/register
     $router->post('register', 'AuthController@register');
     $router->post('login','AuthController@login');
-    $router->group(['prefix'=>'applications'], function () use($router){
-        $router->group(['middleware' => 'auth'], function() use ($router) {
-            $router->post('store','ApplictaionController@store');
-            $router->post('cancel/{id}','ApplictaionController@remove');
-            $router->get('mine','ApplicationController@getMyApplications');
-        });
-        $router->get('available','ApplicationController@getAvailableApplications');
-        $router->get('get/{id}','ApplicationController@get');
+    $router->get('list_apps','ApplicationController@getApplications');
+    $router->get('get_app/{app_id}','ApplicationController@get');
+    $router->get('get_bids/{app_id}','BidController@get_bids');
 
+    $router->group(['middleware' => 'auth'], function() use ($router) {
+        $router->post('store','ApplictaionController@store');
+        $router->post('cancel/{id}','ApplictaionController@remove');
+        $router->post('bid/{id}','BidController@make_bid');
+        $router->get('list_mine','ApplicationController@getMyApplications');
     });
+
 });

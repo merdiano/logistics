@@ -41,7 +41,7 @@ class ApplicationCrudController extends CrudController
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
             ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
             ['name'=>'destination_address', 'type'=>'text','label'=>'Destination address'],
-            ['name'=>'bidding_ends_at','type'=>'dateTime','label'=>'Bidding ends at'],
+            ['name'=>'bidding_ends_at','type'=>'datetime','label'=>'Bidding ends at'],
             ['name'=>'approved', 'type'=>'boolean','label'=>'Approved'],
         ]);
     }
@@ -62,7 +62,7 @@ class ApplicationCrudController extends CrudController
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
             ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
             ['name'=>'destination_address', 'type'=>'text','label'=>'Destination address'],
-            ['name'=>'bidding_ends_at','type'=>'dateTime','label'=>'Bidding ends at'],
+            ['name'=>'bidding_ends_at','type'=>'datetime','label'=>'Bidding ends at'],
             ['name'=>'approved', 'type'=>'boolean','label'=>'Approved']
         ]);
     }

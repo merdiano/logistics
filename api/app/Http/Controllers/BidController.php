@@ -11,5 +11,12 @@ namespace App\Http\Controllers;
 
 class BidController extends Controller
 {
+    public function get_bids($app_id){
+
+    }
+
+    public function make_bid($ability, $arguments = []){
+
+    }
 
 }
