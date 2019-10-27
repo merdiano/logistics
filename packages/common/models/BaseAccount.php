@@ -17,6 +17,10 @@ class BaseAccount extends \Illuminate\Database\Eloquent\Model
     }
 
     public function bidded_applications(){
-        $this->hasManyThrough(BaseApplication::class, BaseBid::class);
+        return $this->hasManyThrough(BaseApplication::class, BaseBid::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(BaseUser::class);
     }
 }
