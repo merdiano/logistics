@@ -17,11 +17,11 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $hidden = [];
-    // protected $dates = [];
+     protected $dates = ['bidding_ends_at'];
     protected $guarded = ['id'];
-    protected $fillable = ['owner_id','account_id','title','description','approved','winning_bid_id',
-        'bidding_ends_at','estimated_cost','estimated_time','estimated_time_unit','image','pickup_location_id',
-        'pickup_address','destination_address','destination_location_id',];
+    protected $fillable = ['owner_id','account_id','description','approved','winning_bid_id',
+        'bidding_ends_at','estimated_cost','estimated_time','estimated_time_unit','image',
+        'pickup_location_id','pickup_address','destination_address','destination_location_id',];
 
     public function bids(){
         return $this->hasMany(BaseBid::class);

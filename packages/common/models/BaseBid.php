@@ -11,7 +11,7 @@ class BaseBid extends \Illuminate\Database\Eloquent\Model
 
     protected $table = "bids";
     protected $guarded = ['id'];
-    protected $fillable = ['owner_id','account_id','winner','proposed_cost','estimated_time','estimated_time','comment','application_id'];
+    protected $fillable = ['owner_id','account_id','winner','proposed_cost','estimated_time','estimated_time_unit','comment','application_id'];
 
     public function application(){
         return $this->belongsTo(BaseApplication::class);

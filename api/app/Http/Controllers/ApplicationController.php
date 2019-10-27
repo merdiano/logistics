@@ -27,16 +27,12 @@ class ApplicationController extends Controller
     }
 
     public function get($application_id){
-        $app = BaseApplication::with('bids')
+        return BaseApplication::withCount('bids')
             ->with('pickup_location')
             ->with('destination_location')
             ->with('account')
             ->with('winner')
-            ->find($application_id);
-        if($app)
-            return response()->json(['application' => $app]);
-        else
-            return response()->json(['message'=>'not found'],404);
+            ->findOrFail($application_id);
     }
 
     public function store(Request $request){
