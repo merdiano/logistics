@@ -39,7 +39,7 @@ class BidController extends Controller
 
             if($application->approved && $has_time){
                 if($request->has('bid_id')){
-
+                    $bid = BaseBid::findOrFail($request->get('bid_id'));
                 }
             }
 
