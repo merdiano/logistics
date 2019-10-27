@@ -31,18 +31,18 @@ class ApplicationCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Columns, maybe Filters
 //        $this->crud->setFromDb();
         $this->crud->setColumns([
-            ['name'=>'owner_id', 'type'=>'select', 'entity'=>'owner','attribute'=>'phone', 'label' => 'Bidder'],
-            ['name'=>'title', 'type'=>'text','label'=>'Title'],
+            ['name'=>'owner_id', 'type'=>'select', 'entity'=>'owner','attribute'=>'phone', 'label' => 'Owner'],
+//            ['name'=>'title', 'type'=>'text','label'=>'Title'],
             ['name'=>'description', 'type'=>'text','label'=>'Description'],
-            ['name'=>'estimated_cost', 'type'=>'number', 'label' => 'Estimated cost'],
-            ['name'=>'estimated_time', 'type'=>'number', 'label' => 'Estimated time'],
+            ['name'=>'estimated_cost', 'type'=>'text', 'label' => 'Estimated cost'],
+            ['name'=>'estimated_time', 'type'=>'text', 'label' => 'Estimated time'],
             ['name'=>'estimated_time_unit', 'type'=>'text', 'label' => 'Estimated time unit'],
             ['name'=>'pickup_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'pickup_location','attribute'=>'title_tk'],
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
             ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
             ['name'=>'destination_address', 'type'=>'text','label'=>'Destination address'],
             ['name'=>'bidding_ends_at','type'=>'datetime','label'=>'Bidding ends at'],
-            ['name'=>'approved', 'type'=>'boolean','label'=>'Approved'],
+            ['name'=>'approved', 'type'=>'check','label'=>'Approved'],
         ]);
     }
 
@@ -52,12 +52,12 @@ class ApplicationCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->addFields([
-            ['name'=>'owner_id', 'type'=>'select', 'entity'=>'owner','attribute'=>'phone', 'label' => 'Bidder'],
-            ['name'=>'title', 'type'=>'text','label'=>'Title'],
+            ['name'=>'owner_id', 'type'=>'select', 'entity'=>'owner','attribute'=>'phone', 'label' => 'Owner'],
+//            ['name'=>'title', 'type'=>'text','label'=>'Title'],
             ['name'=>'description', 'type'=>'text','label'=>'Description'],
             ['name'=>'estimated_cost', 'type'=>'number', 'label' => 'Estimated cost'],
             ['name'=>'estimated_time', 'type'=>'number', 'label' => 'Estimated time'],
-            ['name'=>'estimated_time_unit', 'type'=>'text', 'label' => 'Estimated time unit'],
+            ['name'=>'estimated_time_unit', 'type'=>'enum', 'label' => 'Estimated time unit'],
             ['name'=>'pickup_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'pickup_location','attribute'=>'title_tk'],
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
             ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
