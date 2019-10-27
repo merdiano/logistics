@@ -23,7 +23,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('list_apps','ApplicationController@getApplications');
     $router->get('get_app/{app_id}','ApplicationController@get');
     $router->get('get_bids/{app_id}','BidController@get_bids');
-
+    $router->get('locations','LocationController@index');
     $router->group(['middleware' => 'auth'], function() use ($router) {
         $router->post('store','ApplictaionController@store');
         $router->post('cancel/{id}','ApplictaionController@remove');

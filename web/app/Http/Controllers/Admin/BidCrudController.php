@@ -49,7 +49,7 @@ class BidCrudController extends CrudController
             ['name'=>'proposed_cost', 'type'=>'number', 'label' => 'Proposed cost'],
             ['name'=>'estimated_time', 'type'=>'number', 'label' => 'Proposed time'],
             ['name'=>'estimated_time_unit', 'type'=>'enum', 'label' => 'Proposed time unit'],
-            ['name'=>'application_id', 'type'=>'select','label'=>'Application','entity'=>'application','attribute'=>'title'],
+            ['name'=>'application_id', 'type'=>'select','label'=>'Application','entity'=>'application','attribute'=>'id'],
 
         ]);
     }

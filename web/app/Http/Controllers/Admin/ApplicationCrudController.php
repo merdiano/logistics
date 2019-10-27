@@ -39,7 +39,7 @@ class ApplicationCrudController extends CrudController
             ['name'=>'estimated_time_unit', 'type'=>'text', 'label' => 'Estimated time unit'],
             ['name'=>'pickup_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'pickup_location','attribute'=>'title_tk'],
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
-            ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
+            ['name'=>'destination_location_id', 'type'=>'select','label'=>'Destination location','entity'=>'destination_location','attribute'=>'title_tk'],
             ['name'=>'destination_address', 'type'=>'text','label'=>'Destination address'],
             ['name'=>'bidding_ends_at','type'=>'datetime','label'=>'Bidding ends at'],
             ['name'=>'approved', 'type'=>'check','label'=>'Approved'],
@@ -61,7 +61,7 @@ class ApplicationCrudController extends CrudController
             ['name'=>'estimated_time_unit', 'type'=>'enum', 'label' => 'Estimated time unit'],
             ['name'=>'pickup_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'pickup_location','attribute'=>'title_tk'],
             ['name'=>'pickup_address', 'type'=>'text','label'=>'Pickup address'],
-            ['name'=>'destination_location_id', 'type'=>'select','label'=>'Pickup location','entity'=>'destination_location','attribute'=>'title_tk'],
+            ['name'=>'destination_location_id', 'type'=>'select','label'=>'Destination location','entity'=>'destination_location','attribute'=>'title_tk'],
             ['name'=>'destination_address', 'type'=>'text','label'=>'Destination address'],
             ['name'=>'bidding_ends_at','type'=>'datetime','label'=>'Bidding ends at'],
             ['name'=>'approved', 'type'=>'boolean','label'=>'Approved']
