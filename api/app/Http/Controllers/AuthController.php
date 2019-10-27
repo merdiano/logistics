@@ -39,7 +39,7 @@ class AuthController extends Controller
             $account = new BaseAccount();
             $account->name = $user->name;
             $account->user_id = $user->id;
-
+            $account->save();
             DB::commit();
             //return successful response
             return response()->json(['user' => $user, 'message' => 'REGISTERED'], 201);

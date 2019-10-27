@@ -53,7 +53,7 @@ class ApplicationCrudController extends CrudController
         // TODO: remove setFromDb() and manually define Fields
         $this->crud->addFields([
             ['name'=>'owner_id', 'type'=>'select', 'entity'=>'owner','attribute'=>'phone', 'label' => 'Owner'],
-            ['name'=>'account_id', 'type'=>'select', 'entity'=>'account','attribute'=>'name', 'label' => 'Owner Account'],
+            ['name'=>'account_id', 'type'=>'select', 'entity'=>'account','attribute'=>'name', 'label' => 'Account'],
 //            ['name'=>'title', 'type'=>'text','label'=>'Title'],
             ['name'=>'description', 'type'=>'text','label'=>'Description'],
             ['name'=>'estimated_cost', 'type'=>'number', 'label' => 'Estimated cost'],
