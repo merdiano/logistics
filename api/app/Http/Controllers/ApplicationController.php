@@ -26,13 +26,13 @@ class ApplicationController extends Controller
         return BaseApplication::mine()->paginate(20);
     }
 
-    public function get($application_id){
+    public function get($app_id){
         return BaseApplication::withCount('bids')
             ->with('pickup_location')
             ->with('destination_location')
             ->with('account')
             ->with('winner')
-            ->findOrFail($application_id);
+            ->findOrFail($app_id);
     }
 
     public function store(Request $request){
