@@ -19,4 +19,12 @@ class BaseLocation extends \Illuminate\Database\Eloquent\Model
     public function children(){
         return $this->hasMany(BaseLocation::class,'parent_id');
     }
+
+    public function destination_apps(){
+        return $this->hasMany(BaseApplication::class,'destination_location_id');
+    }
+
+    public function pickup_apps(){
+        return $this->hasMany(BaseApplication::class,'pickup_location_id');
+    }
 }
