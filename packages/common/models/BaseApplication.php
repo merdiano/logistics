@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BaseApplication extends \Illuminate\Database\Eloquent\Model
 {
-    use SoftDeletes;
+//    use SoftDeletes;
     protected $table = 'applications';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
