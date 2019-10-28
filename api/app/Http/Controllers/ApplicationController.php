@@ -31,8 +31,8 @@ class ApplicationController extends Controller
         return BaseApplication::
 //        withCount('bids')
             with('pickup_location')
-//            ->with('destination_location')
-//            ->with('account')
+            ->with('destination_location')
+            ->with('account')
 //  todo          ->with('winner')
             ->findOrFail($app_id);
     }
