@@ -45,15 +45,25 @@ class BidController extends Controller
                     $bid = new BaseBid();
                     $bid->owner_id = auth()->id();
                     $bid->account_id = auth()->user()->account_id;
+                    $bid->application_id = $app_id;
                 }
 
+                $bid->proposed_cost = $request->get('proposed_cost');
+                $bid->estimated_time = $request->get('estimated_time');
+                $bid->estimated_time_unit = $request->get('estimated_time_unit');
+                $bid->comment = $request->get('comment');
+                $bid->save();
 
+                return response()->json([
+                    'message' => 'stored'], 201);
             }
 
         }
         catch (\Exception $e){
             Log::error($e);
+
         }
+        return response()->json(['error' => 'Bid store Failed!'], 409);
     }
 
 }
