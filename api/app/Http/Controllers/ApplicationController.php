@@ -57,7 +57,7 @@ class ApplicationController extends Controller
             else
             {
                 $application = new BaseApplication();
-                $application->owner_id = auth()->id();
+                $application->owner_id = Auth::id();
                 $application->account_id = BaseAccount::select('id')->findOrFail(Auth::id())->id;
             }
 
