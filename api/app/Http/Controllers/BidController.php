@@ -45,7 +45,10 @@ class BidController extends Controller
                 else {
                     $bid = new BaseBid();
                     $bid->owner_id = Auth::id();
-                    $bid->account_id = BaseAccount::select('id')->findOrFail(Auth::id())->id;
+                    $bid->account_id = BaseAccount::select('id')
+                        ->where('user_id',Auth::id())
+                        ->first()
+                        ->id;
                     $bid->application_id = $app_id;
                 }
 
