@@ -78,7 +78,7 @@ class ApplicationController extends Controller
                 'message' => 'stored'], 201);
         }catch (Exception $exception){
             Log::error($exception);
-            return response()->json(['error' => 'Application store Failed!'], 409);
+            return response()->json(['error' => $exception->getMessage()], 409);
         }
     }
 
