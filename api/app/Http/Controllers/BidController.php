@@ -62,7 +62,7 @@ class BidController extends Controller
         }
         catch (\Exception $e){
             Log::error($e);
-
+            return response()->json(['error' => $e->getMessage()], 409);
         }
         return response()->json(['error' => 'Bid store Failed!'], 409);
     }
