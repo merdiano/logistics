@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BaseApplication extends \Illuminate\Database\Eloquent\Model
 {
-//    use SoftDeletes;
+    use SoftDeletes;
     protected $table = 'applications';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
@@ -24,7 +24,7 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
         'pickup_location_id','pickup_address','destination_address','destination_location_id',];
 
     public function bids(){
-        return $this->hasMany(BaseBid::class);
+        return $this->hasMany(BaseBid::class,'application_id');
     }
 
     public function owner(){
