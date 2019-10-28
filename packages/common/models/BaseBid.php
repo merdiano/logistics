@@ -14,14 +14,14 @@ class BaseBid extends \Illuminate\Database\Eloquent\Model
     protected $fillable = ['owner_id','account_id','winner','proposed_cost','estimated_time','estimated_time_unit','comment','application_id'];
 
     public function application(){
-        return $this->belongsTo(BaseApplication::class);
+        return $this->belongsTo(BaseApplication::class,'application_id');
     }
 
     public function account(){
-        return $this->belongsTo(BaseAccount::class);
+        return $this->belongsTo(BaseAccount::class,'account_id');
     }
 
     public function user(){
-        return $this->belongsTo(BaseUser::class);
+        return $this->belongsTo(BaseUser::class,'owner_id');
     }
 }
