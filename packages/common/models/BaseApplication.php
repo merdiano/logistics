@@ -32,7 +32,7 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
     }
 
     public function account(){
-        return $this->belongsTo(BaseAccount::class);
+        return $this->belongsTo(BaseAccount::class,'account_id');
     }
 
     public function winner(){
