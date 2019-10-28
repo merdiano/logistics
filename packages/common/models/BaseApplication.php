@@ -9,6 +9,7 @@ namespace Logistics\Common\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Date;
 
 class BaseApplication extends \Illuminate\Database\Eloquent\Model
 {
@@ -62,6 +63,6 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
             $query->where('id',$app_id);
     }
     public function setBiddingEndsAtAttribute($value) {
-        $this->attributes['bidding_ends_at'] = \Date::parse($value);
+        $this->attributes['bidding_ends_at'] = Date::parse($value);
     }
 }
