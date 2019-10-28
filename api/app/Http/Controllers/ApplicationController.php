@@ -21,7 +21,9 @@ class ApplicationController extends Controller
 {
 
     public function getApplications(){
-        return BaseApplication::biddable()->paginate(20);
+        return BaseApplication::biddable()
+            ->orderBy('created_at','DESC')
+            ->paginate(20);
     }
 
     public function getMyApplications(){

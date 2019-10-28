@@ -17,7 +17,7 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $hidden = [];
-    protected $dates = ['bidding_ends_at','created_at','updated_at','deleted_at'];
+    protected $dates = ['bidding_ends_at'];
     protected $guarded = ['id'];
     protected $fillable = ['owner_id','account_id','description','approved','winning_bid_id',
         'bidding_ends_at','estimated_cost','estimated_time','estimated_time_unit','image',
@@ -60,5 +60,8 @@ class BaseApplication extends \Illuminate\Database\Eloquent\Model
         $query->where('owner_id',auth()->id());
         if($app_id)
             $query->where('id',$app_id);
+    }
+    public function setBiddingEndsAtAttribute($value) {
+        $this->attributes['bidding_ends_at'] = \Date::parse($value);
     }
 }
