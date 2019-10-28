@@ -58,7 +58,10 @@ class ApplicationController extends Controller
             {
                 $application = new BaseApplication();
                 $application->owner_id = Auth::id();
-                $application->account_id = BaseAccount::select('id')->findOrFail(Auth::id())->id;
+                $application->account_id = BaseAccount::select('id')
+                    ->where('user_id',Auth::id())
+                    ->first()
+                    ->id;
             }
 
             $application->bidding_ends_at = Carbon::parse($request->get('bidding_ends_at'));
