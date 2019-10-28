@@ -8,11 +8,11 @@
 
 namespace App\Http\Controllers;
 
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Logistics\Common\Models\BaseAccount;
 use Logistics\Common\Models\BaseApplication;
 use Logistics\Common\Models\BaseBid;
 
@@ -45,7 +45,7 @@ class BidController extends Controller
                 else {
                     $bid = new BaseBid();
                     $bid->owner_id = Auth::id();
-                    $bid->account_id = Auth::user()->account_id;
+                    $bid->account_id = BaseAccount::select('id')->findOrFail(Auth::id())->id;
                     $bid->application_id = $app_id;
                 }
 

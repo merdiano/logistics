@@ -12,7 +12,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Logistics\Common\Models\BaseAccount;
 use Logistics\Common\Models\BaseApplication;
 
 class ApplicationController extends Controller
@@ -56,7 +58,7 @@ class ApplicationController extends Controller
             {
                 $application = new BaseApplication();
                 $application->owner_id = auth()->id();
-                $application->account_id = auth()->account->id;
+                $application->account_id = BaseAccount::select('id')->findOrFail(Auth::id())->id;
             }
 
             $application->bidding_ends_at = Carbon::parse($request->get('bidding_ends_at'));
