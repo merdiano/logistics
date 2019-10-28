@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Logistics\Common\Models\BaseAccount;
 
@@ -28,7 +29,7 @@ class AccountContoller extends Controller
             'about'=>'max:255'
         ]);
         try{
-            $account = BaseAccount::findOrFail(auth()->user()->account_id);
+            $account = BaseAccount::where('user_id',Auth::id())->first();
             $account->name = $request->get('name');
             $account->about = $request->get('about');
             $account->locations = $request->get('locations');
