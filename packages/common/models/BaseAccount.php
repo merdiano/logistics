@@ -13,7 +13,7 @@ class BaseAccount extends \Illuminate\Database\Eloquent\Model
     protected $fillable = ['name','avatar','about','user_id','locations'];
     protected $casts = ['locations' => 'array'];
     public function applications(){
-        return $this->hasMany(BaseApplication::class);
+        return $this->hasMany(BaseApplication::class,'application_id');
     }
 
     public function bidded_applications(){
@@ -21,6 +21,6 @@ class BaseAccount extends \Illuminate\Database\Eloquent\Model
     }
 
     public function user(){
-        return $this->belongsTo(BaseUser::class);
+        return $this->belongsTo(BaseUser::class,'user_id');
     }
 }

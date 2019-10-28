@@ -25,7 +25,7 @@ $router->group(['prefix' => 'v1'], function () use ($router) {
     $router->get('get_bids/{app_id}','BidController@get_bids');
     $router->get('locations','LocationController@index');
     $router->group(['middleware' => 'auth'], function() use ($router) {
-        $router->post('store','ApplictaionController@store');
+        $router->post('store','ApplicationController@store');
         $router->post('cancel/{id}','ApplictaionController@remove');
         $router->post('bid','BidController@make_bid');
         $router->get('list_mine','ApplicationController@getMyApplications');
