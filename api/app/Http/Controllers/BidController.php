@@ -35,7 +35,7 @@ class BidController extends Controller
             $app_id = $request->get('application_id');
             $application = BaseApplication::findOrFail($app_id);
 
-            $has_time = $application->biding_ends_at->lte(Carbon::now());
+            $has_time = $application->bidding_ends_at->lte(Carbon::now());
 
             if($application->approved && $has_time){
                 if($request->has('bid_id')){
